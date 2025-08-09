@@ -1,5 +1,4 @@
-# from typing import 
-from dataclasses import dataclass
+from exception import EmptyFieldError, InvalidFieldError
 
 class Task:
     def __init__(self, 
@@ -15,6 +14,15 @@ class Task:
         self.category = category
         self.priority = priority
         self.status = status
+
+    @classmethod
+    def get_fields(cls):
+        return [
+            ("title", "Название задачи"),
+            ("description", "Описание задачи"),
+            ("category", "Категория задачи"),
+            ("priority", "Приоритет (низкий, средний, высокий)")
+        ]
 
     def to_dict(self):
         return {
